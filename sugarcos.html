@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sugar Cosmetics – Products</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff;
+    }
+
+    header, footer {
+      padding: 20px 40px;
+      background: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      color: black;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      border: 1px solid #880e4f;
+      background: white;
+      color: #880e4f;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .tabs button.active {
+      background: #880e4f;
+      color: white;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 120px;
+      padding: 80px;
+    }
+
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      width: 220px;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    .product-card a {
+      text-decoration: none ;
+      color: black;
+      display:block;
+      font-weight: bolder;
+    }
+
+    .product-card h4{
+      font-weight: bold;
+      color: black;
+      text-decoration: none ;
+    }
+    .product-card:visited, 
+    .product-card:link, 
+    .product-card:hover, 
+    .product-card:active {
+      text-decoration: none;
+      color: black;
+}
+
+    .price {
+      color: #880e4f;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Sugar Cosmetics</h1>
+  <nav style="text-align:center; padding: 10px; background:#f0f0f0;">
+  <a href="index.html" style="margin:0 15px; text-decoration:none; font-weight:bold;">Home</a>
+  <a href="dot&key.html" style="margin:0 15px;text-decoration:none; font-weight:bold;">Dot & Key</a>
+  <a href="swiss-beauty.html" style="margin:0 15px;text-decoration:none; font-weight:bold;">Swiss Beauty</a>
+</nav>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showCategory(event,'lips')">Lips</button>
+  <button class="tab-btn" onclick="showCategory(event,'eyes')">Eyes</button>
+  <button class="tab-btn" onclick="showCategory(event,'face')">Face</button>
+</div>
+
+<div id="product-container" class="products">
+  <!-- Products will load here -->
+</div>
+
+<footer>
+  <p>&copy; 2025 GlowBelle. All rights reserved.</p>
+</footer>
+
+<script>
+  const products = {
+    lips: [
+      {
+        name: "Sugar Tipsy Lip Scrub + Balm Duo",
+        price: "&#8377; 499",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/SUGAR-Tipsy-Lips-Scrub-Balm-Duo-2.jpg?v=1748785531&width=500",
+        link: "https://www.sugarcosmetics.com/products/sugar-tipsy-lips-scrub-balm-duo"
+      },
+      {
+        name: "Glide Peptide SPF50 PA++++ Lip Treatment",
+        price: "&#8377; 349",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Glide-Peptide-SPF50-PA-Lip-Treatment-Kit-10.jpg?v=1748776789&width=1000",
+        link: "https://www.sugarcosmetics.com/products/glide-peptide-spf50-pa-lip-treatment"
+      },
+      {
+        name: "Matte Attack TransferProof Lipstick",
+        price: "&#8377; 749",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Matte-Attack-Transferproof-Lipstick-2.jpg?v=1747219048&width=1000",
+        link: "https://www.sugarcosmetics.com/products/matte-attack-transferproof-lipstick"
+      },
+      {
+        name: "Matte As Hell Mini Crayon Lipstick",
+        price: "&#8377; 299",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Matte-As-Hell-Mini-Crayon-Lipstick-21.jpg?v=1743681075&width=500",
+        link: "https://www.sugarcosmetics.com/products/matte-as-hell-crayon-mini-lipstick"
+      },
+      {
+        name: "Limited Edition Nothing Else Matter Longwear Lipstick",
+        price: "&#8377; 599",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Limited-Edition-Nothing-Else-Matter-Longwear-Lipstick-6.jpg?v=1743676925&width=500",
+        link: "https://www.sugarcosmetics.com/products/nothing-else-matter-longwear-lipstick"
+      },
+      {
+        name: "Sugar Play Smooth Operator Lip Crayon",
+        price: "&#8377; 599",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/SUGAR-Play-Smooth-Operator-Lip-Crayon.jpg?v=1743681200&width=500",
+        link: "https://www.sugarcosmetics.com/products/sugar-play-smooth-operator-lip-crayon"
+      }
+    ],
+    eyes: [
+      {
+        name: "Kohl Of Honour Intense Kajal",
+        price: "&#8377 249",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Kohl-Of-Honour-Intense-Kajal-3_d0e96d7c.jpg?v=1750675085&width=500",
+        link: "https://www.sugarcosmetics.com/products/kohl-of-honour-intense-kajal"
+      },
+      {
+        name: "Double Date Extreme Volume Mascara Duo",
+        price: "&#8377 799",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Double-Date-Extreme-Volume-Mascara-Duo-01-Blackjack.jpg?v=1743679250&width=500",
+        link: "https://www.sugarcosmetics.com/products/double-date-extreme-volume-mascara-duo-01-blackjack"
+      },
+      {
+        name: "Graphic Jam 36hr Eyeliner",
+        price: "&#8377 375",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Graphic-Jam-36HR-Eyeliner-01-Blackest-Black.jpg?v=1743677829&width=500",
+        link: "https://www.sugarcosmetics.com/cdn/shop/files/Graphic-Jam-36HR-Eyeliner-01-Blackest-Black.jpg?v=1743677829&width=500"
+      },
+      {
+        name: "Blend The Rules Eyeshadow Palette",
+        price: "&#8377 1,249",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Blend-The-Rules-Eyeshadow-Palette_a709d3a1.jpg?v=1743677294&width=500",
+        link: "https://www.sugarcosmetics.com/cdn/shop/files/Blend-The-Rules-Eyeshadow-Palette_a709d3a1.jpg?v=1743677294&width=500"
+      },
+      {
+        name: "Arch Arrival Micro Brow Pencil",
+        price: "&#8377 499",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Arch-Arrival-Micro-Brow-Pencil-2.jpg?v=1746104625&width=500",
+        link: "https://www.sugarcosmetics.com/products/arch-arrival-micro-brow-pencil"
+      },
+      {
+        name: "Sugar Play High Key Chrome Eyeshadow",
+        price: "&#8377 249",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/SUGAR-Play-High-Key-Chrome-Eyeshadow-2.jpg?v=1743680802&width=500",
+        link: "https://www.sugarcosmetics.com/products/sugar-play-high-key-chrome-eyeshadow"
+      }
+    ],
+    face: [
+      {
+        name: "Ace Of Face Foundation Stick",
+        price: "&#8377 1,149",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Ace-Of-Face-Foundation-Stick-Kit-3.jpg?v=1752319045&width=500",
+        link: "https://www.sugarcosmetics.com/products/ace-of-face-foundation-stick"
+      },
+      {
+        name: "Goddess Of Flawless BB Serum",
+        price: "&#8377 349",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Goddess-Of-Flawless-BB-Serum-9.jpg?v=1748785579&width=500",
+        link: "https://www.sugarcosmetics.com/products/sugar-goddess-of-flawless-bb-serum"
+      },
+      {
+        name: "Contour De Force Mini Blush",
+        price: "&#8377 375",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Contour-De-Force-Mini-Blush-6_3bbf61a8.jpg?v=1743676704&width=500",
+        link: "https://www.sugarcosmetics.com/products/contour-de-force-mini-blush"
+      },
+      {
+        name: "Grand Finale SPF30 Setting Mist",
+        price: "&#8377 374",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Grand-Finale-SPF30-Setting-Mist.jpg?v=1743678112&width=500",
+        link: "https://www.sugarcosmetics.com/products/grand-finale-spf30-setting-mist"
+      },
+      {
+        name: "Mettle Priming Balm",
+        price: "&#8377 548",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Mettle-Priming-Balm.jpg?v=1743679365&width=500",
+        link: "https://www.sugarcosmetics.com/products/mettle-priming-balm"
+      },
+      {
+        name: "Contour De Force Mini Highlighter",
+        price: "&#8377 425",
+        img: "https://www.sugarcosmetics.com/cdn/shop/files/Contour-De-Force-Mini-Highlighter-2.jpg?v=1743676724&width=500",
+        link: "https://www.sugarcosmetics.com/products/contour-de-force-mini-highlighter"
+      }
+    ]
+  };
+
+  function showCategory(event, category) {
+    const container = document.getElementById("product-container");
+    container.innerHTML = "";
+    products[category].forEach(product => {
+      container.innerHTML += `
+        <a href="${product.link}" target="_blank" class="product-card">
+          <img src="${product.img}" alt="${product.name}">
+          <h4>${product.name}</h4>
+          <div class="price">${product.price}</div>
+        </a>
+      `;
+    });
+
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+  }
+
+  // Load lips by default
+  document.addEventListener("DOMContentLoaded", () => {
+    showCategory({ target: document.querySelector(".tab-btn.active") }, "lips");
+  });
+
+</script>
+
+</body>
+</html>

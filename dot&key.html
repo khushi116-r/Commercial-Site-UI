@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dot & Key – Products</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff;
+    }
+
+    header, footer {
+      padding: 20px 40px;
+      background: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #5a2a83;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      border: 1px solid #5a2a83;
+      background: white;
+      color: #5a2a83;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .tabs button.active {
+      background: #5a2a83;
+      color: white;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 120px;
+      padding: 80px;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      width: 220px;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+      transition: transform 0.2s;
+    }
+
+     .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    
+    .product-card:visited, 
+    .product-card:link, 
+    .product-card:hover, 
+    .product-card:active {
+      text-decoration: none;
+      color: black;
+    }
+    .price {
+      color: #5a2a83;
+      margin-top: 5px;
+    }
+
+    .product-card a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Dot & Key</h1>
+  <nav style="text-align:center; padding: 10px; background:#f0f0f0;">
+  <a href="index.html" style="margin:0 15px; text-decoration:none; font-weight:bold;">Home</a>
+  <a href="swiss-beauty.html" style="margin:0 15px;text-decoration:none; font-weight:bold;">Swiss Beauty</a>
+  <a href="sugarcos.html" style="margin:0 15px;text-decoration:none; font-weight:bold;">Sugar Cosmetics</a>
+</nav>
+
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showCategory(event,'serum')">Serums</button>
+  <button class="tab-btn" onclick="showCategory(event,'moisturizer')">Moisturizers</button>
+  <button class="tab-btn" onclick="showCategory(event,'sunscreen')">Sunscreens</button>
+</div>
+
+<div id="product-container" class="products"></div>
+
+<footer>
+  <p>&copy; 2025 GlowBeauty. All rights reserved.</p>
+</footer>
+
+<script>
+  const products = {
+    serum: [
+      {
+        name: "10% Vitamin C + E Face Serum with 5% Niacinamide ",
+        price: "&#8377 542",
+        img: "https://www.dotandkey.com/cdn/shop/files/1_e8b0f15f-f194-4d5c-b733-3ea1c099b04d.jpg?v=1744620473",
+        link: "https://www.dotandkey.com/products/dot-key-10-vitamin-c-e-5-niacinamide-serum-for-glowing-skin-beginner-friendly"
+      },
+      {
+        name: "10% Niacinamide + Strawberry Brightening Face Serum",
+        price: "&#8377; 479",
+        img: "https://www.dotandkey.com/cdn/shop/files/Artboard_1_f94f4456-d328-4271-ab7e-94bde8c9bbd3.jpg?v=1745323515",
+        link: "https://www.dotandkey.com/products/10-niacinamide-strawberry-brightening-face-serum"
+      },
+      {
+        name: "12% Barrier Boost Serum with Ceramides + Niacinamide",
+        price: "&#8377 479",
+        img: "https://www.dotandkey.com/cdn/shop/files/1-BR-Serum_97878dcb-4561-4500-800d-92ac04a4ce92.jpg?v=1734761250",
+        link: "https://www.dotandkey.com/products/barrier-repair-serum"
+      },
+      {
+        name: "Cica + 10% Niacinamide Face Serum for Oily Skin",
+        price: "&#8377 479",
+        img: "https://www.dotandkey.com/cdn/shop/files/1c_2.jpg?v=1727355078",
+        link: "https://www.dotandkey.com/products/dot-key-cica-10-niacinamide-serum-for-blemish-free-spotless-glowing-skin-3-tranexamic-reduces-acne-dark-spots-oily-acne-prone-sensitive-skin"
+      },
+      {
+        name: "Pomegranate Youth 0.2% Retinol Complex Face Serum",
+        price: "&#8377 479",
+        img: "https://www.dotandkey.com/cdn/shop/files/1-1080-1080.jpg?v=1736421613",
+        link: "https://www.dotandkey.com/products/0-2-retinol-complex-face-serum"
+      },
+      {
+        name: "Watermelon & 10% Glycolic Serum",
+        price: "&#8377 479",
+        img: "https://www.dotandkey.com/cdn/shop/files/1c_bf1a6898-07b2-4b81-9196-efa403cb403c.jpg?v=1721218648",
+        link: "https://www.dotandkey.com/products/watermelon-10-glycolic-super-glow-serum-for-smooth-luminous-glowing-skin-controls-pigmentation-excess-oil-oily-dull-skin"
+      }
+    ],
+    moisturizer: [
+      {
+        name: "Vitamin C + E Moisturizer for Glowing Skin",
+        price: "&#8377; 396",
+        img: "https://www.dotandkey.com/cdn/shop/files/1c-Vit-C-Moisturizer_adcbccb6-945c-4c1a-ac7f-d8a40e3bf5ec.jpg?v=1740647106",
+        link: "https://www.dotandkey.com/cdn/shop/files/1c_bf1a6898-07b2-4b81-9196-efa403cb403c.jpg?v=1721218648"
+      },
+      {
+        name: "Barrier Repair Moisturizer with Ceramides + Hyaluronic Acid",
+        price: "&#8377; 479",
+        img: "https://www.dotandkey.com/cdn/shop/files/BRMoisturizerListing1-175g.jpg?v=1744370012",
+        link: "https://www.dotandkey.com/products/dot-key-ceramides-hyaluronic-hydrating-face-cream-i-repairs-skin-barrier-intense-moisturization-sensitive-dry-skin-fragrance-free"
+      },
+      {
+        name: "Watermelon Cooling Icy Gel Moisturizer",
+        price: "&#8377; 396",
+        img: "https://www.dotandkey.com/cdn/shop/files/Rectangle_700_4d055299-3399-420a-bf86-c4ea04f02233.png?v=1740997631",
+        link: "https://www.dotandkey.com/products/watermelon-moisturizer-icy-gel"
+      },
+      {
+        name: "Niacinamide & Cica(Centella) Oil-Free Moisturizer with Ceramides",
+        price: "&#8377; 396",
+        img: "https://www.dotandkey.com/cdn/shop/files/1_282e0ca4-17c6-4749-ba64-380c2dd3135b.png?v=1744369896",
+        link: "https://www.dotandkey.com/products/cica-5-niacinamide-oil-free-moisturizer-for-dark-spots-acne-fragrance-free-oily-sensitive-acne-prone-skin"
+      },
+      {
+        name: "Strawberry + Niacinamide Brightening Moisturizer",
+        price: "&#8377; 339",
+        img: "https://www.dotandkey.com/cdn/shop/files/1_d773f2bc-55a7-4d0d-b762-16bfea470782.jpg?v=1744370149",
+        link: "https://www.dotandkey.com/products/strawberry-moisturizer"
+      },
+      {
+        name: "Barrier Repair Oil-Free Moisturizer with Ceramides",
+        price: "&#8377; 339",
+        img: "https://www.dotandkey.com/cdn/shop/files/1-1_7f312f45-a060-4520-819a-eac06ecbcf43.jpg?v=1747048528",
+        link: "https://www.dotandkey.com/products/barrier-repair-oil-free-moisturizer"
+      }
+    ],
+    sunscreen: [
+      {
+        name: "Vitamin C + E Sunscreen, SPF 50+ PA++++",
+        price: "&#8377; 476",
+        img: "https://www.dotandkey.com/cdn/shop/files/VitaminCSunscreenListing1.jpg?v=1745308871",
+        link: "https://www.dotandkey.com/products/dot-key-vitamin-c-e-spf-50-pa-face-sunscreen-for-glowing-skin-uv-protection-for-dull-skin"
+      },
+      {
+        name: "Watermelon Cooling Hyauronic Acid Sunscreen SPF 50+ PA++++",
+        price: "&#8377; 378",
+        img: "https://www.dotandkey.com/cdn/shop/files/1_c4cdff0a-0b0b-425b-8e2e-598dab539e32.jpg?v=1745308948",
+        link: "https://www.dotandkey.com/products/watermelon-cooling-spf-50-face-sunscreen"
+      },
+      {
+        name: "Strawberry Dew Tinted Sunscreen SPF 50+ PA++++",
+        price: "&#8377; 439",
+        img: "https://www.dotandkey.com/cdn/shop/files/1_7399b118-b3e1-465a-930f-6d4e1a093e22.jpg?v=1741177103",
+        link: "https://www.dotandkey.com/products/strawberry-dew-tinted-sunscreen-spf-50-pa"
+      },
+      {
+        name: "Barrier Repair Hydrating Sunscreen SPF 50+ PA++++",
+        price: "&#8377; 476",
+        img: "https://www.dotandkey.com/cdn/shop/files/brsun80.jpg?v=1727354299",
+        link: "https://www.dotandkey.com/products/barrier-repair-sunscreen"
+      },
+      {
+        name: "Mango + Detan Gel Sunscreen (Oil Free), SPF 50+ PA++++",
+        price: "&#8377; 476",
+        img: "https://www.dotandkey.com/cdn/shop/files/1-80g.jpg?v=1744373105",
+        link: "https://www.dotandkey.com/products/mango-detan-gel-sunscreen-spf-50"
+      },
+      {
+        name: "Swim + Sports Sunscreen SPF 50+ (Water Resistant)",
+        price: "&#8377; 396",
+        img: "https://www.dotandkey.com/cdn/shop/files/0-Listing--Swim-SS.jpg?v=1744373212",
+        link: "https://www.dotandkey.com/products/lime-rush-swim-sports-spf-50-sunscreen"
+      }
+    ]
+  };
+
+  function showCategory(event, category) {
+    const container = document.getElementById("product-container");
+    container.innerHTML = "";
+    products[category].forEach(product => {
+      container.innerHTML += `
+        <a href="${product.link}" target="_blank" class="product-card">
+          <img src="${product.img}" alt="${product.name}">
+          <h4>${product.name}</h4>
+          <div class="price">${product.price}</div>
+        </a>
+      `;
+    });
+
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+  }
+
+  // Load lips by default
+  document.addEventListener("DOMContentLoaded", () => {
+    showCategory({ target: document.querySelector(".tab-btn.active") }, "serum");
+  });
+</script>
+
+</body>
+</html>

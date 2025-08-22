@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swiss Beauty – Products</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fff;
+    }
+
+    header, footer {
+      padding: 20px 40px;
+      background: #f0f0f0;
+      text-align: center;
+    }
+
+    h1 {
+      color: #c2185b;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+    }
+
+    .tabs button {
+      padding: 10px 20px;
+      border: 1px solid #c2185b;
+      background: white;
+      color: #c2185b;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .tabs button.active {
+      background: #c2185b;
+      color: white;
+    }
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 120px;
+      padding: 80px;
+    }
+
+    .product-card {
+      border: 1px solid #eee;
+      border-radius: 10px;
+      width: 220px;
+      padding: 15px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-card a {
+      text-decoration: none !important;
+      color: inherit;
+      display:block;
+    }
+
+    .product-card h4{
+      font-weight: bold;
+      color: black;
+      text-decoration: none !important;
+    }
+    .product-card:visited, 
+    .product-card:link, 
+    .product-card:hover, 
+    .product-card:active {
+      text-decoration: none;
+      color: black;
+    }
+
+    .price {
+      color: #c2185b;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Swiss Beauty</h1>
+  <nav style="text-align:center; padding: 10px; background:#f0f0f0;">
+  <a href="index.html" style="margin:0 15px; text-decoration:none; font-weight:bold;">Home</a>
+  <a href="dot&key.html" style="margin:0 15px;text-decoration:none; font-weight:bold;">Dot & Key</a>
+  <a href="sugarcos.html" style="margin:0 15px;text-decoration:none; font-weight:bold;">Sugar Cosmetics</a>
+</nav>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showCategory(event,'lips')">Lips</button>
+  <button class="tab-btn" onclick="showCategory(event,'eyes')">Eyes</button>
+  <button class="tab-btn" onclick="showCategory(event,'face')">Face</button>
+</div>
+
+<div id="product-container" class="products">
+  <!-- Products will load here -->
+</div>
+
+<footer>
+  <p>&copy; 2025 GlowBelle. All rights reserved.</p>
+</footer>
+
+<script>
+  const products = {
+    lips: [
+      {
+        name: "Non-Transfer Lipstick",
+        price: "&#8377; 299",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-S17_15_B_900x.jpg?v=1747080801",
+        link: "https://swissbeauty.in/products/non-transfer-matte-lipstick-bare-sb-s17-15"
+      },
+      {
+        name: "Hd Matte Lipstick",
+        price: "&#8377; 299",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-212_09C_900x.jpg?v=1747080535",
+        link: "https://swissbeauty.in/products/hd-matte-lipstick"
+      },
+      {
+        name: "Hold Me Matte Liquid Lipstick",
+        price: "&#8377; 322",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-322_01_900x.jpg?v=1747079319",
+        link: "https://swissbeauty.in/products/hold-me-matte-liquid-lipstick"
+      },
+      {
+        name: "Swiss Beauty Stay On Matte Liquid Lipstick",
+        price: "&#8377; 247",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-LP14_01BrownSyrup_900x.jpg?v=1747078784",
+        link: "https://swissbeauty.in/products/stay-on-matte-liquid-lipstick"
+      },
+      {
+        name: "Gloss Me LipGloss",
+        price: "&#8377; 187",
+        img: "https://swissbeauty.in/cdn/shop/files/Artboard1_733ed97c-804f-4922-91b0-21ea3634e02c_900x.jpg?v=1747080202",
+        link: "https://swissbeauty.in/products/gloss-me-lip-gloss-sb-304"
+      },
+      {
+        name: "Plump-Up WetGloss",
+        price: "&#8377; 209",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-311_01_BarelyThere_900x.jpg?v=1747079508",
+        link: "https://swissbeauty.in/products/plump-up-wetgloss"
+      }
+    ],
+    eyes: [
+      {
+        name: "Eyebrown & Gel Eyeliner",
+        price: "&#8377 322",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-925_01BLACK_FOPwSWATCHES_9f17a597-2b33-43cc-8926-8aced08f9cf7_900x.jpg?v=1747080919",
+        link: "https://swissbeauty.in/products/eyebrow-and-gel-eyeliner-sb-925"
+      },
+      {
+        name: "Precision Mascara",
+        price: "&#8377 224",
+        img: "https://swissbeauty.in/cdn/shop/files/1_a0bf5c52-2087-4b50-bfdf-687d7ca9ad2b_900x.jpg?v=1747080364",
+        link: "https://swissbeauty.in/products/a-long-lasting-jet-black-mascara-sb-10"
+      },
+      {
+        name: "You & Eye Power Black Kajal",
+        price: "&#8377 142",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-E11_You_EyePowerBlackKajal_1_b59befe5-9cc7-4762-b553-02527f3bf759_900x.jpg?v=1747079137",
+        link: "https://swissbeauty.in/products/you-eye-power-black-kajal"
+      },
+      {
+        name: "Hydra Eye Serum Patch With Vitamin C",
+        price: "&#8377 262",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-SC333_FOP_VITAMINC_27db1e8a-1dfb-41c0-bb10-8503e3b0a601_900x.jpg?v=1747079046",
+        link: "https://swissbeauty.in/products/hydra-eye-serum-patch-with-vitamin-c"
+      },
+      {
+        name: "3-In-1 Eyebrown Palette",
+        price: "&#8377 262",
+        img: "https://swissbeauty.in/cdn/shop/products/SB-713-01B_900x.jpg?v=1747080660",
+        link: "https://swissbeauty.in/products/eyebrow-palette-swiss-beauty-cosmetics"
+      },
+      {
+        name: "Ultimate Eyeshadow Palette",
+        price: "&#8377 262",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-706_01_900x.jpg?v=1747080892",
+        link: "https://swissbeauty.in/products/ultimate-eyeshadow-palette-01-sb-706-01"
+      }
+    ],
+    face: [
+      {
+        name: "Oil Control Compact Powder",
+        price: "&#8377 322",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-407-01c_900x.png?v=1747080663",
+        link: "https://swissbeauty.in/products/oil-control-compact-powder-swiss-beauty-cosmetics"
+      },
+      {
+        name: "Liquid Concealer",
+        price: "&#8377 187",
+        img: "https://swissbeauty.in/cdn/shop/files/1_cf283e9b-b2ed-42ca-8d0a-1c8b8beb5bdd_900x.jpg?v=1747080953",
+        link: "https://swissbeauty.in/products/liquid-concealer"
+      },
+      {
+        name: "2-In-1 Baked Blusher & Highlighter",
+        price: "&#8377 299",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-806_01_FOP_900x.jpg?v=1747080937",
+        link: "https://swissbeauty.in/products/baked-blusher-highlighter-1-sb-806-01"
+      },
+      {
+        name: "Primer Mousse Foundation",
+        price: "&#8377 374",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-505_01_900x.jpg?v=1747080861",
+        link: "https://swissbeauty.in/products/primer-mousse-foundation-beige-sb-505-06"
+      },
+      {
+        name: "Liquid Highlighter",
+        price: "&#8377 337",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-810_01_FOP2_0bbfafad-3899-47e1-87e7-063242897070_900x.jpg?v=1747080703",
+        link: "https://swissbeauty.in/products/drop-glow-liquid-highlighter-swiss-beauty-cosmetics"
+      },
+      {
+        name: "3-In-1 Lip And Cheek Cream N' Tint",
+        price: "&#8377 164",
+        img: "https://swissbeauty.in/cdn/shop/files/SB-308_06STRAWBERRYSIZZLE_900x.jpg?v=1747079929",
+        link: "https://swissbeauty.in/products/lip-and-cheek-cream-n-tint"
+      }
+    ]
+  };
+
+  function showCategory(event, category) {
+    const container = document.getElementById("product-container");
+    container.innerHTML = "";
+    products[category].forEach(product => {
+      container.innerHTML += `
+        <a href="${product.link}" target="_blank" class="product-card">
+          <img src="${product.img}" alt="${product.name}">
+          <h4>${product.name}</h4>
+          <div class="price">${product.price}</div>
+        </a>
+      `;
+    });
+
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+  }
+
+  // Load lips by default
+  document.addEventListener("DOMContentLoaded", () => {
+    showCategory({ target: document.querySelector(".tab-btn.active") }, "lips");
+  });
+
+</script>
+
+</body>
+</html>
